@@ -33,7 +33,7 @@ Additionally, some sample YAML files are included to test the cluster after setu
    cd terraform
    terraform init
 
-4. **Edit Variables:
+3. **Edit Variables:**
 
    Update variables.tf with your configuration:
 
@@ -43,4 +43,52 @@ Additionally, some sample YAML files are included to test the cluster after setu
    - **key_name**
    - **vpc_id**
    - **subnet_id**
+
+4. **Provision Infrastructure:**
+
+   ```bash
+   terraform plan
+   terraform apply
+
+5. **Setup Kubernetes Cluster:**
+
+   Execute the setup scripts for the master node in the scripts/ directory:
+
+   ```bash
+   ./scripts/common.sh
+   ./scripts/master.sh
+   ```
+
+   Execute the setup scripts for the worker node in the scripts/ directory:
+
+   ```bash
+   ./scripts/common.sh
+   ```
+
+---
+
+# Directory Structure
+
+- **terraform/ - AWS infrastructure definitions**
+- **scripts/ - Scripts to set up Kubernetes cluster with kubeadm**
+- **manifests/ - Sample YAML files to test the cluster**
+
+# Usage
+
+Once the cluster is set up:
+
+1. **Test the cluster nodes:**
+
+   ```bash
+   kubectl get nodes
+
+2. **Apply sample manifests:**
+
+   ```bash
+   kubectl apply -f manifests/
+
+
+
+
+   
 
